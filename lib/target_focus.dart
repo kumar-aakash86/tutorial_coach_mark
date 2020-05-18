@@ -13,6 +13,7 @@ class TargetFocus {
   final hideNextButton;
   final hidePreviousButton;
   final hideSkipButton;
+  final customClickAction;
 
   TargetFocus({
     this.identify,
@@ -20,6 +21,7 @@ class TargetFocus {
     this.targetPosition,
     this.contents,
     this.shape,
+    this.customClickAction, 
     this.handleChildClick = false,
     this.hideNextButton = false,
     this.hidePreviousButton = false,

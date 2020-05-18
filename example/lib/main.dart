@@ -228,6 +228,9 @@ class _MyHomePageState extends State<MyHomePage> {
       identify: "Target 3",
       keyTarget: keyButton5,
       hideNextButton: false,
+      customClickAction: (){
+        print('THIS IS CUSTOM CLICK ACTION');
+      },
       contents: [
         ContentTarget(
             align: AlignContent.right,
