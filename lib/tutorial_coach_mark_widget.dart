@@ -23,6 +23,9 @@ class TutorialCoachMarkWidget extends StatefulWidget {
   final TextStyle textStyleSkip;
   final TextStyle textStylePrevious;
   final TextStyle textStyleNext;
+  final AlignContent alignNextButton;
+  final AlignContent alignPreviousButton;
+  final AlignContent alignSkipButton;
   final Function() onPreviousClick;
 
   TutorialCoachMarkWidget({
@@ -41,7 +44,7 @@ class TutorialCoachMarkWidget extends StatefulWidget {
     this.textStyleSkip = const TextStyle(color: Colors.white),
     this.textStylePrevious = const TextStyle(color: Colors.white),
     this.textStyleNext = const TextStyle(color: Colors.white),
-    this.onPreviousClick,
+    this.onPreviousClick, this.alignNextButton, this.alignPreviousButton, this.alignSkipButton,
   }) : super(key: key);
 
   @override
@@ -81,15 +84,19 @@ class _TutorialCoachMarkWidgetState extends State<TutorialCoachMarkWidget> {
               currentTarget = target;
               if (widget.currentTarget != null) widget.currentTarget(target);
               _controllerFade.sink.add(1.0);
+
+              
+
               if (currentTarget.contents.first.align == AlignContent.bottom) {
-                alignNext.add(Alignment.bottomRight);
-                alignPrevious.add(Alignment.bottomLeft);
-                alignSkip.add(Alignment.topRight);
+                alignNext.add(widget.alignNextButton ?? Alignment.bottomRight);
+                alignPrevious.add(widget.alignPreviousButton ?? Alignment.bottomLeft);
+                alignSkip.add(widget.alignSkipButton ?? Alignment.topRight);
               } else {
-                alignNext.add(Alignment.topRight);
-                alignPrevious.add(Alignment.topLeft);
-                alignSkip.add(Alignment.bottomRight);
+                alignNext.add(widget.alignNextButton ??Alignment.topRight);
+                alignPrevious.add(widget.alignPreviousButton ?? Alignment.topLeft);
+                alignSkip.add(widget.alignSkipButton ?? Alignment.bottomRight);
               }
+
             },
             removeFocus: () {
               _controllerFade.sink.add(0.0);
