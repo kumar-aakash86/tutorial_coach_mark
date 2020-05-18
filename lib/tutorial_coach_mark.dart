@@ -3,6 +3,8 @@ library tutorial_coach_mark;
 import 'package:flutter/material.dart';
 import 'package:tutorial_coach_mark/target_focus.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark_widget.dart';
+
+import 'content_target.dart';
 export 'package:tutorial_coach_mark/content_target.dart';
 export 'package:tutorial_coach_mark/target_focus.dart';
 
@@ -20,6 +22,9 @@ class TutorialCoachMark {
   final TextStyle textStyleSkip;
   final TextStyle textStylePrevious;
   final TextStyle textStyleNext;
+  final AlignContent alignNextButton;
+  final AlignContent alignPreviousButton;
+  final AlignContent alignSkipButton;
   final Color colorShadow;
   final double opacityShadow;
 
@@ -40,6 +45,7 @@ class TutorialCoachMark {
     this.textStyleSkip = const TextStyle(color: Colors.white),
     this.textStylePrevious = const TextStyle(color: Colors.white),
     this.textStyleNext = const TextStyle(color: Colors.white),
+    this.alignNextButton, this.alignPreviousButton, this.alignSkipButton,
     this.opacityShadow = 0.8,
   }) : assert(targets != null, opacityShadow >= 0 && opacityShadow <= 1);
 
@@ -57,6 +63,9 @@ class TutorialCoachMark {
         textNext: textNext,
         textStylePrevious: textStylePrevious,
         textStyleNext: textStyleNext,
+        alignNextButton: alignNextButton, 
+        alignPreviousButton: alignNextButton, 
+        alignSkipButton: alignNextButton, 
         colorShadow: colorShadow,
         opacityShadow: opacityShadow,
         finish: () {
