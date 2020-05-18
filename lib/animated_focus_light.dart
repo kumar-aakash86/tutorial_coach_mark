@@ -168,6 +168,7 @@ class _AnimatedFocusLightState extends State<AnimatedFocusLight>
 
                               if(_rect.contains(offset) && widget?.targets[currentFocus].handleChildClick){
                                 _checkIfClickable(widget?.targets[currentFocus].keyTarget.currentWidget);
+                                _tapHandler();
                               }
                             },
                             child: CustomPaint(
