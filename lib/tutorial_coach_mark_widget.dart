@@ -91,7 +91,7 @@ class _TutorialCoachMarkWidgetState extends State<TutorialCoachMarkWidget> {
               if (widget.currentTarget != null) widget.currentTarget(target);
               _controllerFade.sink.add(1.0);
 
-              
+              print('current target${currentTarget} ');
 
               if (currentTarget.contents.first.align == AlignContent.bottom) {
                 alignNext.add(widget.alignNextButton ?? Alignment.bottomRight);
@@ -227,6 +227,8 @@ class _TutorialCoachMarkWidgetState extends State<TutorialCoachMarkWidget> {
     return StreamBuilder<AlignmentGeometry>(
         stream: alignSkip,
         builder: (context, snapshot) {
+          if(currentTarget != null && currentTarget.hideSkipButton)
+            return Container();
           return Align(
             alignment: snapshot.data ?? Alignment.bottomRight,
             child: SafeArea(
@@ -261,9 +263,12 @@ class _TutorialCoachMarkWidgetState extends State<TutorialCoachMarkWidget> {
   }
 
   _buildPrevious() {
+    
     return StreamBuilder<AlignmentGeometry>(
         stream: alignPrevious,
         builder: (context, snapshot) {
+          if(currentTarget != null && currentTarget.hidePreviousButton)
+            return Container();
           return Align(
             alignment: snapshot.data ?? Alignment.centerLeft,
             child: SafeArea(
@@ -298,6 +303,8 @@ class _TutorialCoachMarkWidgetState extends State<TutorialCoachMarkWidget> {
     return StreamBuilder<AlignmentGeometry>(
         stream: alignNext,
         builder: (context, snapshot) {
+          if(currentTarget != null && currentTarget.hideNextButton)
+            return Container();
           return Align(
             alignment: snapshot.data ?? Alignment.centerRight,
             child: SafeArea(

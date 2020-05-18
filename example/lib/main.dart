@@ -171,6 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
       identify: "Target 2",
       keyTarget: keyButton4,
       handleChildClick: true,
+      hideNextButton: true,
       contents: [
         ContentTarget(
             align: AlignContent.left,
@@ -293,6 +294,7 @@ class _MyHomePageState extends State<MyHomePage> {
     targets.add(TargetFocus(
       identify: "Target 5",
       keyTarget: keyButton2,
+      handleChildClick: true,
       contents: [
         ContentTarget(
             align: AlignContent.top,
@@ -357,7 +359,7 @@ class _MyHomePageState extends State<MyHomePage> {
         alignPreviousButton: Alignment.bottomLeft,
         alignNextButton: Alignment.bottomRight,
         alignSkipButton: Alignment.topRight,
-        // barrierDismissible: false,
+        barrierDismissible: false,
         paddingFocus: 10,
         opacityShadow: 0.8,
         finish: () {
