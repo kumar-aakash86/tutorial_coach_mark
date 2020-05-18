@@ -5,7 +5,6 @@ import 'package:tutorial_coach_mark/target_position.dart';
 TargetPosition getTargetCurrent(TargetFocus target) {
 
   if(target.targetPosition != null){
-    if(target.keyTarget != null)
     return target.targetPosition;
   }
   else if (target.keyTarget != null) {
