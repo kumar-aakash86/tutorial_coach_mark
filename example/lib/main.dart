@@ -343,8 +343,8 @@ class _MyHomePageState extends State<MyHomePage> {
         textSkip: "SKIP",
         textPrevious: "Previous",
         textNext: "next",
-        textStyleNext: TextStyle(color: Colors.amber),
-        textStylePrevious: TextStyle(color: Colors.amber),
+        textStyleNext: TextStyle(color: Colors.white),
+        textStylePrevious: TextStyle(color: Colors.white),
         paddingFocus: 10,
         opacityShadow: 0.8,
         finish: () {
