@@ -10,13 +10,16 @@ class TutorialCoachMark {
   final BuildContext _context;
   final List<TargetFocus> targets;
   final Function(TargetFocus) clickTarget;
+  final Function(TargetFocus) currentTarget;
   final Function() finish;
   final double paddingFocus;
   final Function() clickSkip;
-  final AlignmentGeometry alignSkip;
   final String textSkip;
+  final String textPrevious;
+  final String textNext;
   final TextStyle textStyleSkip;
-  final bool hideSkip;
+  final TextStyle textStylePrevious;
+  final TextStyle textStyleNext;
   final Color colorShadow;
   final double opacityShadow;
 
@@ -27,13 +30,16 @@ class TutorialCoachMark {
     this.targets,
     this.colorShadow = Colors.black,
     this.clickTarget,
+    this.currentTarget,
     this.finish,
     this.paddingFocus = 10,
     this.clickSkip,
-    this.alignSkip = Alignment.bottomRight,
     this.textSkip = "SKIP",
+    this.textPrevious = "PREVIOUS",
+    this.textNext = "NEXT",
     this.textStyleSkip = const TextStyle(color: Colors.white),
-    this.hideSkip = false,
+    this.textStylePrevious = const TextStyle(color: Colors.white),
+    this.textStyleNext = const TextStyle(color: Colors.white),
     this.opacityShadow = 0.8,
   }) : assert(targets != null, opacityShadow >= 0 && opacityShadow <= 1);
 
@@ -42,12 +48,15 @@ class TutorialCoachMark {
       return TutorialCoachMarkWidget(
         targets: targets,
         clickTarget: clickTarget,
+        currentTarget: currentTarget,
         paddingFocus: paddingFocus,
         clickSkip: clickSkip,
-        alignSkip: alignSkip,
         textSkip: textSkip,
         textStyleSkip: textStyleSkip,
-        hideSkip: hideSkip,
+        textPrevious: textPrevious,
+        textNext: textNext,
+        textStylePrevious: textStylePrevious,
+        textStyleNext: textStyleNext,
         colorShadow: colorShadow,
         opacityShadow: opacityShadow,
         finish: () {

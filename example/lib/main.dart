@@ -135,27 +135,27 @@ class _MyHomePageState extends State<MyHomePage> {
         ContentTarget(
             align: AlignContent.bottom,
             child: Container(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    "Titulo lorem ipsum",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 20.0),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10.0),
-                    child: Text(
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar tortor eget maximus iaculis.",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  )
-                ],
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                "Titulo lorem ipsum",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontSize: 20.0),
               ),
-            ))
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0),
+                child: Text(
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar tortor eget maximus iaculis.",
+                  style: TextStyle(color: Colors.white),
+                ),
+              )
+            ],
+          ),
+        ))
       ],
       shape: ShapeLightFocus.RRect,
     ));
@@ -341,14 +341,22 @@ class _MyHomePageState extends State<MyHomePage> {
         targets: targets,
         colorShadow: Colors.red,
         textSkip: "SKIP",
+        textPrevious: "Previous",
+        textNext: "next",
+        textStyleNext: TextStyle(color: Colors.white),
+        textStylePrevious: TextStyle(color: Colors.white),
         paddingFocus: 10,
-        opacityShadow: 0.8, finish: () {
-      print("finish");
-    }, clickTarget: (target) {
-      print(target);
-    }, clickSkip: () {
-      print("skip");
-    })
+        opacityShadow: 0.8,
+        finish: () {
+          print("finish");
+        },
+        clickTarget: (target) {
+          print(target);
+        },
+        currentTarget: (target) {},
+        clickSkip: () {
+          print("skip");
+        })
       ..show();
   }
 
