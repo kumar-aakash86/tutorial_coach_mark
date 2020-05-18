@@ -227,6 +227,7 @@ class _MyHomePageState extends State<MyHomePage> {
     targets.add(TargetFocus(
       identify: "Target 3",
       keyTarget: keyButton5,
+      hideNextButton: false,
       contents: [
         ContentTarget(
             align: AlignContent.right,

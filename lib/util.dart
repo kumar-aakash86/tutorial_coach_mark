@@ -4,13 +4,10 @@ import 'package:tutorial_coach_mark/target_position.dart';
 
 TargetPosition getTargetCurrent(TargetFocus target) {
 
-  print('${target.targetPosition}');
   if(target.targetPosition != null){
-  print('calling if');
     return target.targetPosition;
   }
   else if (target.keyTarget != null) {
-    print('calling else');
     var key = target.keyTarget;
 
     try {
