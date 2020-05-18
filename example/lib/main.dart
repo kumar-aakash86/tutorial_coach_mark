@@ -357,7 +357,7 @@ class _MyHomePageState extends State<MyHomePage> {
         alignPreviousButton: Alignment.bottomLeft,
         alignNextButton: Alignment.bottomRight,
         alignSkipButton: Alignment.topRight,
-        barrierDismissible: false,
+        // barrierDismissible: false,
         paddingFocus: 10,
         opacityShadow: 0.8,
         finish: () {

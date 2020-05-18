@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:tutorial_coach_mark/target_focus.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark_widget.dart';
 
-import 'content_target.dart';
 export 'package:tutorial_coach_mark/content_target.dart';
 export 'package:tutorial_coach_mark/target_focus.dart';
 

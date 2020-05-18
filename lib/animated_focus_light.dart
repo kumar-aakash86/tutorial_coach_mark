@@ -140,9 +140,9 @@ class _AnimatedFocusLightState extends State<AnimatedFocusLight>
       color: Colors.transparent,
       child: InkWell(
         onTap: () {
-          print('tap');
-          if (!widget.barrierDismissible) return;
-          _tapHandler();
+          print('tap ');
+          // if (!widget.barrierDismissible) return;
+          // _tapHandler();
         },
         child: AnimatedBuilder(
             animation: _controller,
@@ -160,6 +160,12 @@ class _AnimatedFocusLightState extends State<AnimatedFocusLight>
                     child: currentFocus != -1
                         ? GestureDetector(
                             onTapDown: (TapDownDetails details) {
+                              
+                              if (widget.barrierDismissible){
+                                _tapHandler();
+                                return;
+                              }
+
                               RenderBox box = context.findRenderObject();
                               final offset = box.globalToLocal(details.globalPosition);
                               // print('$offset');
