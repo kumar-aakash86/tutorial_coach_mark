@@ -23,9 +23,9 @@ class TutorialCoachMarkWidget extends StatefulWidget {
   final TextStyle textStyleSkip;
   final TextStyle textStylePrevious;
   final TextStyle textStyleNext;
-  final AlignContent alignNextButton;
-  final AlignContent alignPreviousButton;
-  final AlignContent alignSkipButton;
+  final Alignment alignNextButton;
+  final Alignment alignPreviousButton;
+  final Alignment alignSkipButton;
   final Function() onPreviousClick;
 
   TutorialCoachMarkWidget({

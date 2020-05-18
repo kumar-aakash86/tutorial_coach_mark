@@ -22,9 +22,9 @@ class TutorialCoachMark {
   final TextStyle textStyleSkip;
   final TextStyle textStylePrevious;
   final TextStyle textStyleNext;
-  final AlignContent alignNextButton;
-  final AlignContent alignPreviousButton;
-  final AlignContent alignSkipButton;
+  final Alignment alignNextButton;
+  final Alignment alignPreviousButton;
+  final Alignment alignSkipButton;
   final Color colorShadow;
   final double opacityShadow;
 
