@@ -10,18 +10,20 @@ class LightPaintRect extends CustomPainter {
   final double opacityShadow;
   final double offset;
   final double radius;
+  final rectSize;
 
   Paint _paintFocus;
 
-  LightPaintRect({
-    this.progress,
-    this.positioned,
-    this.target,
-    this.colorShadow = Colors.black,
-    this.opacityShadow = 0.8,
-    this.offset = 10,
-    this.radius = 10,
-  }) : assert(opacityShadow >= 0 && opacityShadow <= 1) {
+  LightPaintRect(
+      {this.progress,
+      this.positioned,
+      this.target,
+      this.colorShadow = Colors.black,
+      this.opacityShadow = 0.8,
+      this.offset = 10,
+      this.radius = 10,
+      this.rectSize})
+      : assert(opacityShadow >= 0 && opacityShadow <= 1) {
     _paintFocus = Paint()
       ..color = Colors.transparent
       ..blendMode = BlendMode.clear;
@@ -40,6 +42,8 @@ class LightPaintRect extends CustomPainter {
     double w = maxSise * (1 - progress) + target.size.width + offset;
 
     double h = maxSise * (1 - progress) + target.size.height + offset;
+
+    rectSize(Rect.fromLTWH(x, y, w, h));
 
     RRect rrect = RRect.fromRectAndRadius(
         Rect.fromLTWH(x, y, w, h), Radius.circular(radius));

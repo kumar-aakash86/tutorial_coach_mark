@@ -25,6 +25,7 @@ class TutorialCoachMark {
   final Alignment alignNextButton;
   final Alignment alignPreviousButton;
   final Alignment alignSkipButton;
+  final bool barrierDismissible;
   final Color colorShadow;
   final double opacityShadow;
 
@@ -46,6 +47,7 @@ class TutorialCoachMark {
     this.textStylePrevious = const TextStyle(color: Colors.white),
     this.textStyleNext = const TextStyle(color: Colors.white),
     this.alignNextButton, this.alignPreviousButton, this.alignSkipButton,
+    this.barrierDismissible = true,
     this.opacityShadow = 0.8,
   }) : assert(targets != null, opacityShadow >= 0 && opacityShadow <= 1);
 
@@ -68,8 +70,9 @@ class TutorialCoachMark {
         alignSkipButton: alignSkipButton, 
         colorShadow: colorShadow,
         opacityShadow: opacityShadow,
+        barrierDismissible: barrierDismissible,
         finish: () {
-          hide();
+            hide();
         },
       );
     });

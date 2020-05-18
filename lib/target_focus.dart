@@ -9,6 +9,7 @@ class TargetFocus {
   final TargetPosition targetPosition;
   final List<ContentTarget> contents;
   final ShapeLightFocus shape;
+  final handleChildClick;
 
   TargetFocus({
     this.identify,
@@ -16,6 +17,7 @@ class TargetFocus {
     this.targetPosition,
     this.contents,
     this.shape,
+    this.handleChildClick = false
   }) : assert(keyTarget != null || targetPosition != null);
 
   @override

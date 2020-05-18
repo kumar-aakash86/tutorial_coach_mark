@@ -61,6 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: Colors.blueAccent,
                       child: Icon(Icons.remove_red_eye),
                       onPressed: () {
+                        print('SHOWING TUTORIAL');
                         showTutorial();
                       },
                     ),
@@ -75,7 +76,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 50,
                 child: RaisedButton(
                   key: keyButton2,
-                  onPressed: () {},
+                  onPressed: () {
+                    print('button 2');
+                  },
                 ),
               ),
             ),
@@ -102,7 +105,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 50,
                   child: RaisedButton(
                     key: keyButton4,
-                    onPressed: () {},
+                    onPressed: () {
+                      print('key button 4');
+                    },
                   ),
                 ),
               ),
@@ -116,7 +121,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 50,
                   child: RaisedButton(
                     key: keyButton5,
-                    onPressed: () {},
+                    onPressed: () {
+                      print('key button clicked');
+                    },
                   ),
                 ),
               ),
@@ -131,6 +138,7 @@ class _MyHomePageState extends State<MyHomePage> {
     targets.add(TargetFocus(
       identify: "Target 1",
       keyTarget: keyButton,
+      handleChildClick: true,
       contents: [
         ContentTarget(
             align: AlignContent.top,
@@ -162,6 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
     targets.add(TargetFocus(
       identify: "Target 2",
       keyTarget: keyButton4,
+      handleChildClick: true,
       contents: [
         ContentTarget(
             align: AlignContent.left,
@@ -348,15 +357,20 @@ class _MyHomePageState extends State<MyHomePage> {
         alignPreviousButton: Alignment.bottomLeft,
         alignNextButton: Alignment.bottomRight,
         alignSkipButton: Alignment.topRight,
+        barrierDismissible: false,
         paddingFocus: 10,
         opacityShadow: 0.8,
         finish: () {
-          print("finish");
+          print('finish');
         },
         clickTarget: (target) {
-          print(target);
+          // print('click target');
+          // print(target);
         },
-        currentTarget: (target) {},
+        currentTarget: (target) {
+          // print('current target');
+          // print(target);
+        },
         clickSkip: () {
           print("skip");
         })
@@ -364,8 +378,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _afterLayout(_) {
-    Future.delayed(Duration(milliseconds: 100), () {
-      showTutorial();
-    });
+    // Future.delayed(Duration(milliseconds: 100), () {
+    //   showTutorial();
+    // });
   }
 }

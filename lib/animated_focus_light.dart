@@ -22,6 +22,7 @@ class AnimatedFocusLight extends StatefulWidget {
   final Stream<void> streamTap;
   final Stream<void> streamPreviousTap;
   final Stream<void> streamNextTap;
+  final bool barrierDismissible;
 
   const AnimatedFocusLight({
     Key key,
@@ -36,6 +37,7 @@ class AnimatedFocusLight extends StatefulWidget {
     this.streamTap,
     this.streamPreviousTap,
     this.streamNextTap,
+    this.barrierDismissible,
   }) : super(key: key);
 
   @override
@@ -130,12 +132,16 @@ class _AnimatedFocusLightState extends State<AnimatedFocusLight>
     super.initState();
   }
 
+  Rect _rect;
+
   @override
   Widget build(BuildContext context) {
     return Material(
       color: Colors.transparent,
       child: InkWell(
         onTap: () {
+          print('tap');
+          if (!widget.barrierDismissible) return;
           _tapHandler();
         },
         child: AnimatedBuilder(
@@ -152,25 +158,39 @@ class _AnimatedFocusLightState extends State<AnimatedFocusLight>
                     width: double.maxFinite,
                     height: double.maxFinite,
                     child: currentFocus != -1
-                        ? CustomPaint(
-                            painter: widget?.targets[currentFocus]?.shape ==
-                                    ShapeLightFocus.RRect
-                                ? LightPaintRect(
-                                    colorShadow: widget.colorShadow,
-                                    positioned: positioned,
-                                    progress: progressAnimated,
-                                    offset: widget.paddingFocus,
-                                    target: targetPosition,
-                                    radius: 15,
-                                    opacityShadow: widget.opacityShadow,
-                                  )
-                                : LightPaint(
-                                    progressAnimated,
-                                    positioned,
-                                    sizeCircle,
-                                    colorShadow: widget.colorShadow,
-                                    opacityShadow: widget.opacityShadow,
-                                  ),
+                        ? GestureDetector(
+                            onTapDown: (TapDownDetails details) {
+                              RenderBox box = context.findRenderObject();
+                              final offset = box.globalToLocal(details.globalPosition);
+                              // print('$offset');
+                              // print('$_rect - ${_rect.contains(offset)}');
+                              // print('${details.globalPosition} - ${positioned} - ${targetPosition.offset}');
+
+                              if(_rect.contains(offset) && widget?.targets[currentFocus].handleChildClick){
+                                _checkIfClickable(widget?.targets[currentFocus].keyTarget.currentWidget);
+                              }
+                            },
+                            child: CustomPaint(
+                              painter: widget?.targets[currentFocus]?.shape ==
+                                      ShapeLightFocus.RRect
+                                  ? LightPaintRect(
+                                      colorShadow: widget.colorShadow,
+                                      positioned: positioned,
+                                      progress: progressAnimated,
+                                      offset: widget.paddingFocus,
+                                      target: targetPosition,
+                                      radius: 15,
+                                      opacityShadow: widget.opacityShadow,
+                                      rectSize: (_r) => _rect = _r
+                                    )
+                                  : LightPaint(
+                                      progressAnimated,
+                                      positioned,
+                                      sizeCircle,
+                                      colorShadow: widget.colorShadow,
+                                      opacityShadow: widget.opacityShadow,
+                                    ),
+                            ),
                           )
                         : Container(),
                   );
@@ -253,5 +273,17 @@ class _AnimatedFocusLightState extends State<AnimatedFocusLight>
 
   void _afterLayout(Duration timeStamp) {
     _nextFocus();
+  }
+
+  _checkIfClickable(widget){
+    // print(widget);
+    if(widget is IconButton)
+      (widget as IconButton).onPressed();
+    else if(widget is RaisedButton)
+      (widget as RaisedButton).onPressed();
+    else if(widget is FlatButton)
+      (widget as FlatButton).onPressed(); 
+    else if(widget is GestureDetector)
+      (widget as GestureDetector).onTap();
   }
 }

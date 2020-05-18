@@ -26,6 +26,7 @@ class TutorialCoachMarkWidget extends StatefulWidget {
   final Alignment alignNextButton;
   final Alignment alignPreviousButton;
   final Alignment alignSkipButton;
+  final bool barrierDismissible;
   final Function() onPreviousClick;
 
   TutorialCoachMarkWidget({
@@ -44,7 +45,11 @@ class TutorialCoachMarkWidget extends StatefulWidget {
     this.textStyleSkip = const TextStyle(color: Colors.white),
     this.textStylePrevious = const TextStyle(color: Colors.white),
     this.textStyleNext = const TextStyle(color: Colors.white),
-    this.onPreviousClick, this.alignNextButton, this.alignPreviousButton, this.alignSkipButton,
+    this.onPreviousClick, 
+    this.alignNextButton, 
+    this.alignPreviousButton, 
+    this.alignSkipButton,
+    this.barrierDismissible
   }) : super(key: key);
 
   @override
@@ -72,6 +77,7 @@ class _TutorialCoachMarkWidgetState extends State<TutorialCoachMarkWidget> {
       child: Stack(
         children: <Widget>[
           AnimatedFocusLight(
+            barrierDismissible: widget.barrierDismissible,
             targets: widget.targets,
             finish: widget.finish,
             paddingFocus: widget.paddingFocus,
