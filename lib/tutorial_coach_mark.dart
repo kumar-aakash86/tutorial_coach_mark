@@ -64,8 +64,8 @@ class TutorialCoachMark {
         textStylePrevious: textStylePrevious,
         textStyleNext: textStyleNext,
         alignNextButton: alignNextButton, 
-        alignPreviousButton: alignNextButton, 
-        alignSkipButton: alignNextButton, 
+        alignPreviousButton: alignPreviousButton, 
+        alignSkipButton: alignSkipButton, 
         colorShadow: colorShadow,
         opacityShadow: opacityShadow,
         finish: () {

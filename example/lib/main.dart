@@ -133,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
       keyTarget: keyButton,
       contents: [
         ContentTarget(
-            align: AlignContent.bottom,
+            align: AlignContent.top,
             child: Container(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -345,6 +345,9 @@ class _MyHomePageState extends State<MyHomePage> {
         textNext: "next",
         textStyleNext: TextStyle(color: Colors.white),
         textStylePrevious: TextStyle(color: Colors.white),
+        alignPreviousButton: Alignment.bottomLeft,
+        alignNextButton: Alignment.bottomRight,
+        alignSkipButton: Alignment.topRight,
         paddingFocus: 10,
         opacityShadow: 0.8,
         finish: () {
